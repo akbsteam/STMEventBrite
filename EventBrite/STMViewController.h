@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STMViewController : UIViewController
+#import "STMEBAuthDelegate.h"
+
+@interface STMViewController : UIViewController <STMEBAuthDelegate>
 
 @end

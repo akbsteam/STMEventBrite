@@ -7,23 +7,31 @@
 //
 
 #import "STMViewController.h"
+#import "STMEventBrite.h"
 
 @interface STMViewController ()
+
+@property (nonatomic, strong) STMEventbrite *eb;
 
 @end
 
 @implementation STMViewController
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [super viewDidAppear:animated];
+    
+    if (!self.eb) {
+#warning add appkey, appsecret
+        self.eb = [[STMEventbrite alloc] initWithAppKey:@"APPKEY" secret:@"APPSECRET"];
+        UIViewController *vc = [self.eb authoriseViewController:self];
+        [self presentModalViewController:vc animated:YES];
+    }
 }
 
-- (void)didReceiveMemoryWarning
+- (void)complete
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.eb eventSearchWithKeywords:@[@"Southampton"]];
 }
 
 @end

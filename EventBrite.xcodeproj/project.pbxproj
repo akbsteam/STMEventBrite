@@ -24,6 +24,15 @@
 		15E95D5316AED66100B2478B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E95D2B16AED66000B2478B /* Foundation.framework */; };
 		15E95D5B16AED66100B2478B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15E95D5916AED66100B2478B /* InfoPlist.strings */; };
 		15E95D5E16AED66100B2478B /* EventBriteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E95D5D16AED66100B2478B /* EventBriteTests.m */; };
+		15E95D7616AED7DA00B2478B /* STMEventbrite.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E95D7516AED7DA00B2478B /* STMEventbrite.m */; };
+		15E95D7716AED7DA00B2478B /* STMEventbrite.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E95D7516AED7DA00B2478B /* STMEventbrite.m */; };
+		15E95D7A16AEE41800B2478B /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E95D7916AEE41800B2478B /* NSDictionary+UrlEncoding.m */; };
+		15E95D7B16AEE41800B2478B /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E95D7916AEE41800B2478B /* NSDictionary+UrlEncoding.m */; };
+		15E95D9D16AEFEA900B2478B /* STMEBAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E95D9C16AEFEA900B2478B /* STMEBAuthViewController.m */; };
+		15E95D9E16AEFEA900B2478B /* STMEBAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E95D9C16AEFEA900B2478B /* STMEBAuthViewController.m */; };
+		15E95DA116AF06F000B2478B /* XQueryComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E95DA016AF06F000B2478B /* XQueryComponents.m */; };
+		15E95DA216AF06F000B2478B /* XQueryComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E95DA016AF06F000B2478B /* XQueryComponents.m */; };
+		B5A87BDA68FA4993B04C1A09 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9AC91A401204066BCA4C611 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +69,17 @@
 		15E95D5A16AED66100B2478B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		15E95D5C16AED66100B2478B /* EventBriteTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventBriteTests.h; sourceTree = "<group>"; };
 		15E95D5D16AED66100B2478B /* EventBriteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventBriteTests.m; sourceTree = "<group>"; };
+		15E95D7416AED7DA00B2478B /* STMEventbrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMEventbrite.h; path = Classes/STMEventbrite.h; sourceTree = "<group>"; };
+		15E95D7516AED7DA00B2478B /* STMEventbrite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMEventbrite.m; path = Classes/STMEventbrite.m; sourceTree = "<group>"; };
+		15E95D7816AEE41800B2478B /* NSDictionary+UrlEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+UrlEncoding.h"; path = "Classes/NSDictionary+UrlEncoding.h"; sourceTree = "<group>"; };
+		15E95D7916AEE41800B2478B /* NSDictionary+UrlEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+UrlEncoding.m"; path = "Classes/NSDictionary+UrlEncoding.m"; sourceTree = "<group>"; };
+		15E95D9B16AEFEA900B2478B /* STMEBAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMEBAuthViewController.h; path = Classes/STMEBAuthViewController.h; sourceTree = "<group>"; };
+		15E95D9C16AEFEA900B2478B /* STMEBAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMEBAuthViewController.m; path = Classes/STMEBAuthViewController.m; sourceTree = "<group>"; };
+		15E95D9F16AF06F000B2478B /* XQueryComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XQueryComponents.h; path = Classes/Categories/XQueryComponents.h; sourceTree = "<group>"; };
+		15E95DA016AF06F000B2478B /* XQueryComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XQueryComponents.m; path = Classes/Categories/XQueryComponents.m; sourceTree = "<group>"; };
+		15FB9D2C16AF0DD200F1A7D0 /* STMEBAuthDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = STMEBAuthDelegate.h; path = Classes/Protocols/STMEBAuthDelegate.h; sourceTree = "<group>"; };
+		D9AC91A401204066BCA4C611 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9CE783B346B4912BBFCE717 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +90,7 @@
 				15E95D2A16AED66000B2478B /* UIKit.framework in Frameworks */,
 				15E95D2C16AED66000B2478B /* Foundation.framework in Frameworks */,
 				15E95D2E16AED66000B2478B /* CoreGraphics.framework in Frameworks */,
+				B5A87BDA68FA4993B04C1A09 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +114,7 @@
 				15E95D5616AED66100B2478B /* EventBriteTests */,
 				15E95D2816AED66000B2478B /* Frameworks */,
 				15E95D2616AED66000B2478B /* Products */,
+				E9CE783B346B4912BBFCE717 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +134,7 @@
 				15E95D2B16AED66000B2478B /* Foundation.framework */,
 				15E95D2D16AED66000B2478B /* CoreGraphics.framework */,
 				15E95D5016AED66100B2478B /* SenTestingKit.framework */,
+				D9AC91A401204066BCA4C611 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,6 +142,7 @@
 		15E95D2F16AED66000B2478B /* EventBrite */ = {
 			isa = PBXGroup;
 			children = (
+				15E95D7216AED7BE00B2478B /* Classes */,
 				15E95D3816AED66000B2478B /* STMAppDelegate.h */,
 				15E95D3916AED66000B2478B /* STMAppDelegate.m */,
 				15E95D4116AED66000B2478B /* STMViewController.h */,
@@ -163,6 +187,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		15E95D7216AED7BE00B2478B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				15E95D7416AED7DA00B2478B /* STMEventbrite.h */,
+				15E95D7516AED7DA00B2478B /* STMEventbrite.m */,
+				15E95DA316AF094300B2478B /* Categories */,
+				15E95D9B16AEFEA900B2478B /* STMEBAuthViewController.h */,
+				15E95D9C16AEFEA900B2478B /* STMEBAuthViewController.m */,
+				15FB9D2C16AF0DD200F1A7D0 /* STMEBAuthDelegate.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		15E95DA316AF094300B2478B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				15E95D7816AEE41800B2478B /* NSDictionary+UrlEncoding.h */,
+				15E95D7916AEE41800B2478B /* NSDictionary+UrlEncoding.m */,
+				15E95D9F16AF06F000B2478B /* XQueryComponents.h */,
+				15E95DA016AF06F000B2478B /* XQueryComponents.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,6 +221,7 @@
 				15E95D2116AED66000B2478B /* Sources */,
 				15E95D2216AED66000B2478B /* Frameworks */,
 				15E95D2316AED66000B2478B /* Resources */,
+				B6CDE2C08DDF4D138751CBAB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,6 +317,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		B6CDE2C08DDF4D138751CBAB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -278,6 +341,10 @@
 				15E95D3616AED66000B2478B /* main.m in Sources */,
 				15E95D3A16AED66000B2478B /* STMAppDelegate.m in Sources */,
 				15E95D4316AED66000B2478B /* STMViewController.m in Sources */,
+				15E95D7616AED7DA00B2478B /* STMEventbrite.m in Sources */,
+				15E95D7A16AEE41800B2478B /* NSDictionary+UrlEncoding.m in Sources */,
+				15E95D9D16AEFEA900B2478B /* STMEBAuthViewController.m in Sources */,
+				15E95DA116AF06F000B2478B /* XQueryComponents.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +353,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				15E95D5E16AED66100B2478B /* EventBriteTests.m in Sources */,
+				15E95D7716AED7DA00B2478B /* STMEventbrite.m in Sources */,
+				15E95D7B16AEE41800B2478B /* NSDictionary+UrlEncoding.m in Sources */,
+				15E95D9E16AEFEA900B2478B /* STMEBAuthViewController.m in Sources */,
+				15E95DA216AF06F000B2478B /* XQueryComponents.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,10 +460,12 @@
 		};
 		15E95D6216AED66100B2478B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9CE783B346B4912BBFCE717 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventBrite/EventBrite-Prefix.pch";
 				INFOPLIST_FILE = "EventBrite/EventBrite-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -400,10 +473,12 @@
 		};
 		15E95D6316AED66100B2478B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9CE783B346B4912BBFCE717 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventBrite/EventBrite-Prefix.pch";
 				INFOPLIST_FILE = "EventBrite/EventBrite-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -462,6 +537,7 @@
 				15E95D6316AED66100B2478B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		15E95D6416AED66100B2478B /* Build configuration list for PBXNativeTarget "EventBriteTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +546,7 @@
 				15E95D6616AED66100B2478B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
