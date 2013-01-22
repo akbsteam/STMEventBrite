@@ -23,6 +23,9 @@
 
 #import "STMEBAuthDelegate.h"
 
+typedef void (^STMBESuccess)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON);
+typedef void (^STMBEFailure)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON);
+
 @interface STMEventbrite : NSObject
 
 - (id)initWithAppKey:(NSString *)appKey secret:(NSString *)secret;
@@ -31,8 +34,9 @@
 
 #pragma mark - Events
 
-- (void)eventSearchWithKeywords:(NSArray *)keywords;
-- (void)eventGet:(NSUInteger)id;
+- (void)eventSearchWithKeywords:(NSArray *)keywords success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)eventGet:(NSUInteger)id success:(STMBESuccess)success failure:(STMBEFailure)failure;
+
 //- (void)eventNew;
 //- (void)eventCopy;
 //- (void)eventUpdate;
@@ -44,7 +48,7 @@
 
 #pragma mark - Venues
 
-- (void)venueGet:(NSUInteger)id;
+- (void)venueGet:(NSUInteger)id success:(STMBESuccess)success failure:(STMBEFailure)failure;
 //- (void)venueNew;
 //- (void)venueUpdate;
 
@@ -56,24 +60,38 @@
 
 #pragma mark - Attendees
 
-- (void)eventListAttendees:(NSUInteger)id count:(NSUInteger)count page:(NSUInteger)page doNotDisplay:(NSArray *)doNotDisplay showFullBarcodes:(BOOL)showFullBarcodes;
+- (void)eventListAttendees:(NSUInteger)id
+                     count:(NSUInteger)count
+                      page:(NSUInteger)page
+              doNotDisplay:(NSArray *)doNotDisplay
+          showFullBarcodes:(BOOL)showFullBarcodes
+                   success:(STMBESuccess)success
+                   failure:(STMBEFailure)failure;
 
 #pragma mark - Organizer Profiles
 
-- (void)organizerListEvents:(NSUInteger)id display:(NSArray *)display;
-- (void)organizerGet:(NSUInteger)id;
-- (void)organizerNewName:(NSString *)name description:(NSString *)description;
-- (void)organizerUpdate:(NSUInteger)id name:(NSString *)name description:(NSString *)description;
+- (void)organizerListEvents:(NSUInteger)id display:(NSArray *)display success:(STMBESuccess)success failure:(STMBEFailure)failure;
+
+- (void)organizerGet:(NSUInteger)id success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)organizerNewName:(NSString *)name description:(NSString *)description success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)organizerUpdate:(NSUInteger)id name:(NSString *)name description:(NSString *)description success:(STMBESuccess)success failure:(STMBEFailure)failure;
 
 #pragma mark - Users
 
-- (void)userListEventsForUser:(NSString *)email display:(NSArray *)display doNotDisplay:(NSArray *)doNotDisplay statuses:(NSArray *)statuses asc:(BOOL)asc;
-- (void)userListTicketsWithType:(NSString *)type;
-- (void)userListVenues;
-- (void)userListOrganizers;
-- (void)userGetWithId:(NSUInteger)id orEmail:(NSString *)email;
-- (void)userNewWithEmail:(NSString *)email password:(NSString *)password;
-- (void)userUpdateWithEmail:(NSString *)email password:(NSString *)password;
+- (void)userListEventsForUser:(NSString *)email
+                      display:(NSArray *)display
+                 doNotDisplay:(NSArray *)doNotDisplay
+                     statuses:(NSArray *)statuses
+                          asc:(BOOL)asc
+                      success:(STMBESuccess)success
+                      failure:(STMBEFailure)failure;
+
+- (void)userListTicketsWithType:(NSString *)type success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)userListVenuesWithSuccess:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)userListOrganizersWithSuccess:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)userGetWithId:(NSUInteger)id orEmail:(NSString *)email success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)userNewWithEmail:(NSString *)email password:(NSString *)password success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)userUpdateWithEmail:(NSString *)email password:(NSString *)password success:(STMBESuccess)success failure:(STMBEFailure)failure;
 
 #pragma mark - Payments
 

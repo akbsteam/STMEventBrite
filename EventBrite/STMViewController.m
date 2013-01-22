@@ -31,7 +31,13 @@
 
 - (void)complete
 {
-    [self.eb eventSearchWithKeywords:@[@"Southampton"]];
+    [self.eb eventSearchWithKeywords:@[@"Southampton"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"%@", JSON);
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Request Failed with Error: %@, %@", error, error.userInfo);
+        
+    }];
 }
 
 @end
