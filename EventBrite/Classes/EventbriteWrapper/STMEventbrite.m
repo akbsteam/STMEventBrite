@@ -53,7 +53,7 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
 
 - (BOOL)hasAccessToken
 {
-    return ([self accessToken] == nil);
+    return ([self accessToken] != nil);
 }
 
 - (UIViewController *)authoriseViewController:(id <STMEBAuthDelegate>)delegate
@@ -67,7 +67,8 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
 
 - (NSString *)accessToken
 {
-    return [AFOAuthCredential retrieveCredentialWithIdentifier:self.oauthClient.serviceProviderIdentifier].accessToken;
+    AFOAuthCredential *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:self.oauthClient.serviceProviderIdentifier];
+    return credential.accessToken;
 }
 
 - (void)setAccessToken:(NSString *)accessToken

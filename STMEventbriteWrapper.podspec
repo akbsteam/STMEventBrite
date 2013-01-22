@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "STMEventbriteWrapper"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "A simple wrapper for the Eventbrite API"
   s.homepage     = "https://github.com/akbsteam/STMEventBrite"
 
