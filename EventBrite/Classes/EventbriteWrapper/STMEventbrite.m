@@ -357,8 +357,8 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
     }
     
     if (authentication || access_token) {
-        //        NSString *auth = [NSString stringWithFormat:@"Bearer %@", access_token];
-        //        [mRequest addValue:auth forHTTPHeaderField:@"Authorization"];
+        NSString *auth = [NSString stringWithFormat:@"Bearer %@", access_token];
+        [mRequest addValue:auth forHTTPHeaderField:@"Authorization"];
     }
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:[mRequest copy] success:success failure:failure];
