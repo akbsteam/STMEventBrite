@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
   s.source_files = 'Classes', 'Classes/EventbriteWrapper/**/*.{h,m}'
 
   s.requires_arc = true
-  s.dependency 'AFNetworking', '~> 1.0.1'
-  s.dependency 'AFOAuth2Client', '~> 0.1.0'
+  s.dependency 'AFNetworking', '>= 1.0.1'
+  s.dependency 'AFOAuth2Client', '>= 0.1.0'
 end
