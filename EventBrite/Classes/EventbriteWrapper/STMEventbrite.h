@@ -29,13 +29,14 @@ typedef void (^STMBEFailure)(NSURLRequest *request, NSHTTPURLResponse *response,
 @interface STMEventbrite : NSObject
 
 - (id)initWithAppKey:(NSString *)appKey secret:(NSString *)secret;
+- (BOOL)hasAccessToken;
 - (UIViewController *)authoriseViewController:(id <STMEBAuthDelegate>)delegate;
 - (void)setAccessToken:(NSString *)accessToken;
 
 #pragma mark - Events
 
 - (void)eventSearchWithKeywords:(NSArray *)keywords success:(STMBESuccess)success failure:(STMBEFailure)failure;
-- (void)eventGet:(NSUInteger)id success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)eventGet:(NSString *)eventId success:(STMBESuccess)success failure:(STMBEFailure)failure;
 
 //- (void)eventNew;
 //- (void)eventCopy;
@@ -48,7 +49,7 @@ typedef void (^STMBEFailure)(NSURLRequest *request, NSHTTPURLResponse *response,
 
 #pragma mark - Venues
 
-- (void)venueGet:(NSUInteger)id success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)venueGet:(NSString *)venueId success:(STMBESuccess)success failure:(STMBEFailure)failure;
 //- (void)venueNew;
 //- (void)venueUpdate;
 
@@ -60,7 +61,7 @@ typedef void (^STMBEFailure)(NSURLRequest *request, NSHTTPURLResponse *response,
 
 #pragma mark - Attendees
 
-- (void)eventListAttendees:(NSUInteger)id
+- (void)eventListAttendees:(NSString *)eventId
                      count:(NSUInteger)count
                       page:(NSUInteger)page
               doNotDisplay:(NSArray *)doNotDisplay
@@ -70,11 +71,11 @@ typedef void (^STMBEFailure)(NSURLRequest *request, NSHTTPURLResponse *response,
 
 #pragma mark - Organizer Profiles
 
-- (void)organizerListEvents:(NSUInteger)id display:(NSArray *)display success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)organizerListEvents:(NSString *)organiserId display:(NSArray *)display success:(STMBESuccess)success failure:(STMBEFailure)failure;
 
-- (void)organizerGet:(NSUInteger)id success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)organizerGet:(NSString *)organiserId success:(STMBESuccess)success failure:(STMBEFailure)failure;
 - (void)organizerNewName:(NSString *)name description:(NSString *)description success:(STMBESuccess)success failure:(STMBEFailure)failure;
-- (void)organizerUpdate:(NSUInteger)id name:(NSString *)name description:(NSString *)description success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)organizerUpdate:(NSString *)organiserId name:(NSString *)name description:(NSString *)description success:(STMBESuccess)success failure:(STMBEFailure)failure;
 
 #pragma mark - Users
 
@@ -89,7 +90,7 @@ typedef void (^STMBEFailure)(NSURLRequest *request, NSHTTPURLResponse *response,
 - (void)userListTicketsWithType:(NSString *)type success:(STMBESuccess)success failure:(STMBEFailure)failure;
 - (void)userListVenuesWithSuccess:(STMBESuccess)success failure:(STMBEFailure)failure;
 - (void)userListOrganizersWithSuccess:(STMBESuccess)success failure:(STMBEFailure)failure;
-- (void)userGetWithId:(NSUInteger)id orEmail:(NSString *)email success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)userGetWithId:(NSString *)userId orEmail:(NSString *)email success:(STMBESuccess)success failure:(STMBEFailure)failure;
 - (void)userNewWithEmail:(NSString *)email password:(NSString *)password success:(STMBESuccess)success failure:(STMBEFailure)failure;
 - (void)userUpdateWithEmail:(NSString *)email password:(NSString *)password success:(STMBESuccess)success failure:(STMBEFailure)failure;
 

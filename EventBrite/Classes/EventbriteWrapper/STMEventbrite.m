@@ -51,6 +51,11 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
     return self;
 }
 
+- (BOOL)hasAccessToken
+{
+    return ([self accessToken] == nil);
+}
+
 - (UIViewController *)authoriseViewController:(id <STMEBAuthDelegate>)delegate
 {
     NSString *authUrl = [NSString stringWithFormat:@"%@/oauth/authorize?response_type=token&client_id=%@", EVENTBRITE_BASEURL, self.appKey];
@@ -84,43 +89,43 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
     [self callEventbriteWithMethod:@"event_search" authentication:NO args:[args copy] success:success failure:failure];
 }
 
-- (void)eventGet:(NSUInteger)id success:(STMBESuccess)success failure:(STMBEFailure)failure
+- (void)eventGet:(NSString *)eventId success:(STMBESuccess)success failure:(STMBEFailure)failure
 {
-    [self callEventbriteWithMethod:@"event_get" authentication:NO args:@{ @"id": @(id) } success:success failure:failure];
+    [self callEventbriteWithMethod:@"event_get" authentication:NO args:@{ @"id": eventId } success:success failure:failure];
 }
 
 - (void)eventNew
 {
-   [self notimplemented];
+    [self notimplemented];
 }
 
 - (void)eventCopy
 {
-   [self notimplemented];
+    [self notimplemented];
 }
 
 - (void)eventUpdate
 {
-   [self notimplemented];
+    [self notimplemented];
 }
 
 #pragma mark - Tickets
 
 - (void)ticketNew
 {
-   [self notimplemented];
+    [self notimplemented];
 }
 
 - (void)ticketUpdate
 {
-   [self notimplemented];
+    [self notimplemented];
 }
 
 #pragma mark - Venues
 
-- (void)venueGet:(NSUInteger)id success:(STMBESuccess)success failure:(STMBEFailure)failure
+- (void)venueGet:(NSString *)venueId success:(STMBESuccess)success failure:(STMBEFailure)failure
 {
-    [self callEventbriteWithMethod:@"venue_get" authentication:YES args:@{ @"id": @(id) } success:success failure:failure];
+    [self callEventbriteWithMethod:@"venue_get" authentication:YES args:@{ @"id": venueId } success:success failure:failure];
 }
 
 - (void)venueNew
@@ -153,7 +158,7 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
 #pragma mark - Attendees
 
 // doNotDisplay - [profile,answers,address]
-- (void)eventListAttendees:(NSUInteger)id
+- (void)eventListAttendees:(NSString *)eventId
                      count:(NSUInteger)count
                       page:(NSUInteger)page
               doNotDisplay:(NSArray *)doNotDisplay
@@ -163,7 +168,7 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
 {
     NSMutableDictionary *args = [NSMutableDictionary dictionary];
     
-    [args setObject:@(id) forKey:@"id"];
+    [args setObject:eventId forKey:@"id"];
     [args setObject:@(showFullBarcodes) forKey:@"show_full_barcodes"];
     
     if (count > 0) {
@@ -184,11 +189,11 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
 #pragma mark - Organizer Profiles
 
 // display - [custom_header,custom_footer,confirmation_page,confirmation_email]
-- (void)organizerListEvents:(NSUInteger)id display:(NSArray *)display success:(STMBESuccess)success failure:(STMBEFailure)failure
+- (void)organizerListEvents:(NSString *)organiserId display:(NSArray *)display success:(STMBESuccess)success failure:(STMBEFailure)failure
 {
     NSMutableDictionary *args = [NSMutableDictionary dictionary];
     
-    [args setObject:@(id) forKey:@"id"];
+    [args setObject:organiserId forKey:@"id"];
     
     if (display) {
         [args setObject:[display componentsJoinedByString:@","] forKey:@"display"];
@@ -197,9 +202,9 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
     [self callEventbriteWithMethod:@"organiser_list_events" authentication:YES args:[args copy] success:success failure:failure];
 }
 
-- (void)organizerGet:(NSUInteger)id success:(STMBESuccess)success failure:(STMBEFailure)failure
+- (void)organizerGet:(NSString *)organiserId success:(STMBESuccess)success failure:(STMBEFailure)failure
 {
-    [self callEventbriteWithMethod:@"organiser_get" authentication:NO args:@{ @"id": @(id) } success:success failure:failure];
+    [self callEventbriteWithMethod:@"organiser_get" authentication:NO args:@{ @"id": organiserId } success:success failure:failure];
 }
 
 - (void)organizerNewName:(NSString *)name description:(NSString *)description success:(STMBESuccess)success failure:(STMBEFailure)failure
@@ -207,13 +212,13 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
     [self callEventbriteWithMethod:@"organiser_new" authentication:YES args:@{ @"name":name, @"description":description } success:success failure:failure];
 }
 
-- (void)organizerUpdate:(NSUInteger)id
+- (void)organizerUpdate:(NSString *)organiserId
                    name:(NSString *)name
             description:(NSString *)description
                 success:(STMBESuccess)success
                 failure:(STMBEFailure)failure
 {
-    [self callEventbriteWithMethod:@"organiser_update" authentication:YES args:@{ @"id": @(id), @"name":name, @"description":description } success:success failure:failure];
+    [self callEventbriteWithMethod:@"organiser_update" authentication:YES args:@{ @"id": organiserId, @"name":name, @"description":description } success:success failure:failure];
 }
 
 #pragma mark - Users
@@ -270,15 +275,15 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
     [self callEventbriteWithMethod:@"user_list_organizers" authentication:YES args:nil success:success failure:failure];
 }
 
-- (void)userGetWithId:(NSUInteger)id orEmail:(NSString *)email success:(STMBESuccess)success failure:(STMBEFailure)failure
+- (void)userGetWithId:(NSString *)userId orEmail:(NSString *)email success:(STMBESuccess)success failure:(STMBEFailure)failure
 {
     NSDictionary *args = nil;
     
-    if (id != 0) {
-        args = @{ @"user_id": @(id) };
+    if (userId != 0) {
+        args = @{ @"user_id": userId };
     } else if (email != nil) {
         args = @{ @"email": email };
-    }    
+    }
     
     [self callEventbriteWithMethod:@"user_get" authentication:YES args:args success:success failure:failure];
 }
@@ -336,9 +341,11 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
+    NSLog(@"%@", urlString);
+    
     NSMutableURLRequest *mRequest = [request mutableCopy];
     
-    NSString *access_token = [AFOAuthCredential retrieveCredentialWithIdentifier:self.oauthClient.serviceProviderIdentifier].accessToken;
+    NSString *access_token = [self accessToken];
     if (!access_token && authentication) {
         NSException* myException = [NSException
                                     exceptionWithName:@"Auth required"
@@ -347,12 +354,12 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
         
         @throw myException;
     }
-
+    
     if (authentication || access_token) {
-        NSString *auth = [NSString stringWithFormat:@"Bearer %@", access_token];
-        [mRequest addValue:auth forHTTPHeaderField:@"Authorization"];
+        //        NSString *auth = [NSString stringWithFormat:@"Bearer %@", access_token];
+        //        [mRequest addValue:auth forHTTPHeaderField:@"Authorization"];
     }
-
+    
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:[mRequest copy] success:success failure:failure];
     
     [operation start];
