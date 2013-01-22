@@ -280,7 +280,7 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
         args = @{ @"email": email };
     }    
     
-    [self callEventbriteWithMethod:@"user_list_organizers" authentication:YES args:args success:success failure:failure];
+    [self callEventbriteWithMethod:@"user_get" authentication:YES args:args success:success failure:failure];
 }
 
 - (void)userNewWithEmail:(NSString *)email
@@ -296,7 +296,7 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
                     success:(STMBESuccess)success
                     failure:(STMBEFailure)failure
 {
-    [self callEventbriteWithMethod:@"user_new" authentication:YES args: @{ @"new_email": email, @"new_password": password } success:success failure:failure];
+    [self callEventbriteWithMethod:@"user_update" authentication:YES args: @{ @"new_email": email, @"new_password": password } success:success failure:failure];
 }
 
 #pragma mark - Payments
