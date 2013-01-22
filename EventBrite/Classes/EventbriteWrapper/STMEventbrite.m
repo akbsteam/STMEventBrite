@@ -262,14 +262,7 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
         args = @{ @"user_id": @(id) };
     } else if (email != nil) {
         args = @{ @"email": email };
-    } else {
-        NSException* myException = [NSException
-                                    exceptionWithName:@"Invalid arguments"
-                                    reason:@"Must supply id or email"
-                                    userInfo:nil];
-        
-        @throw myException;
-    }
+    }    
     
     [self callEventbriteWithMethod:@"user_list_organizers" authentication:YES args:args];
 }
