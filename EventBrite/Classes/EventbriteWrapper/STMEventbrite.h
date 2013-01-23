@@ -35,7 +35,7 @@ typedef void (^STMBEFailure)(NSURLRequest *request, NSHTTPURLResponse *response,
 
 #pragma mark - Events
 
-- (void)eventSearchWithKeywords:(NSArray *)keywords success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)eventSearchWithArgs:(NSDictionary *)args success:(STMBESuccess)success failure:(STMBEFailure)failure;
 - (void)eventGet:(NSString *)eventId success:(STMBESuccess)success failure:(STMBEFailure)failure;
 
 //- (void)eventNew;
@@ -71,11 +71,11 @@ typedef void (^STMBEFailure)(NSURLRequest *request, NSHTTPURLResponse *response,
 
 #pragma mark - Organizer Profiles
 
-- (void)organizerListEvents:(NSString *)organiserId display:(NSArray *)display success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)organizerListEvents:(NSString *)organizerId display:(NSArray *)display success:(STMBESuccess)success failure:(STMBEFailure)failure;
 
-- (void)organizerGet:(NSString *)organiserId success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)organizerGet:(NSString *)organizerId success:(STMBESuccess)success failure:(STMBEFailure)failure;
 - (void)organizerNewName:(NSString *)name description:(NSString *)description success:(STMBESuccess)success failure:(STMBEFailure)failure;
-- (void)organizerUpdate:(NSString *)organiserId name:(NSString *)name description:(NSString *)description success:(STMBESuccess)success failure:(STMBEFailure)failure;
+- (void)organizerUpdate:(NSString *)organizerId name:(NSString *)name description:(NSString *)description success:(STMBESuccess)success failure:(STMBEFailure)failure;
 
 #pragma mark - Users
 

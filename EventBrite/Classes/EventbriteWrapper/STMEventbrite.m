@@ -79,14 +79,8 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
 
 #pragma mark - Events
 
-- (void)eventSearchWithKeywords:(NSArray *)keywords success:(STMBESuccess)success failure:(STMBEFailure)failure
+- (void)eventSearchWithArgs:(NSDictionary *)args success:(STMBESuccess)success failure:(STMBEFailure)failure
 {
-    NSMutableDictionary *args = [NSMutableDictionary dictionary];
-    
-    if (keywords) {
-        [args setObject:[keywords componentsJoinedByString:@","] forKey:@"keywords"];
-    }
-    
     [self callEventbriteWithMethod:@"event_search" authentication:NO args:[args copy] success:success failure:failure];
 }
 
@@ -190,36 +184,36 @@ NSString *const EVENTBRITE_BASEURL = @"https://www.eventbrite.com";
 #pragma mark - Organizer Profiles
 
 // display - [custom_header,custom_footer,confirmation_page,confirmation_email]
-- (void)organizerListEvents:(NSString *)organiserId display:(NSArray *)display success:(STMBESuccess)success failure:(STMBEFailure)failure
+- (void)organizerListEvents:(NSString *)organizerId display:(NSArray *)display success:(STMBESuccess)success failure:(STMBEFailure)failure
 {
     NSMutableDictionary *args = [NSMutableDictionary dictionary];
     
-    [args setObject:organiserId forKey:@"id"];
+    [args setObject:organizerId forKey:@"id"];
     
     if (display) {
         [args setObject:[display componentsJoinedByString:@","] forKey:@"display"];
     }
     
-    [self callEventbriteWithMethod:@"organiser_list_events" authentication:YES args:[args copy] success:success failure:failure];
+    [self callEventbriteWithMethod:@"organizer_list_events" authentication:YES args:[args copy] success:success failure:failure];
 }
 
-- (void)organizerGet:(NSString *)organiserId success:(STMBESuccess)success failure:(STMBEFailure)failure
+- (void)organizerGet:(NSString *)organizerId success:(STMBESuccess)success failure:(STMBEFailure)failure
 {
-    [self callEventbriteWithMethod:@"organiser_get" authentication:NO args:@{ @"id": organiserId } success:success failure:failure];
+    [self callEventbriteWithMethod:@"organizer_get" authentication:NO args:@{ @"id": organizerId } success:success failure:failure];
 }
 
 - (void)organizerNewName:(NSString *)name description:(NSString *)description success:(STMBESuccess)success failure:(STMBEFailure)failure
 {
-    [self callEventbriteWithMethod:@"organiser_new" authentication:YES args:@{ @"name":name, @"description":description } success:success failure:failure];
+    [self callEventbriteWithMethod:@"organizer_new" authentication:YES args:@{ @"name":name, @"description":description } success:success failure:failure];
 }
 
-- (void)organizerUpdate:(NSString *)organiserId
+- (void)organizerUpdate:(NSString *)organizerId
                    name:(NSString *)name
             description:(NSString *)description
                 success:(STMBESuccess)success
                 failure:(STMBEFailure)failure
 {
-    [self callEventbriteWithMethod:@"organiser_update" authentication:YES args:@{ @"id": organiserId, @"name":name, @"description":description } success:success failure:failure];
+    [self callEventbriteWithMethod:@"organizer_update" authentication:YES args:@{ @"id": organizerId, @"name":name, @"description":description } success:success failure:failure];
 }
 
 #pragma mark - Users
